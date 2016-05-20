@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html ng-app="dashboardApp" >
+<head>
+    <title>${user.name}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link href="/born_dashboard/static/src/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/app.min.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/styles.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/toaster.min.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/ngDialog.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/ngDialog-theme-plain.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/angular-chart.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/angular-datepicker.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/dashboard1.css" rel="stylesheet"/>
+
+</head>
+<body  style="background-color:white;-moz-user-select:none;-webkit-user-select:none" onselectstart="return false">
+
+
+
+    <!--mobile-Navbar-->
+    <div ng-controller="NavbarController as vm"  class="h4 app-header navbar navbar-fixed-top mobile-nav" style="min-height: 0px;background:white ">
+        <div class="no-border text-center bm-mid-nav">
+            <div>
+                <button ng-class="{'day': 'bm-active'}[vm.display]" ng-click="vm.setDisplay('day')" class="bg-white no-border bm-top-btn-three">今日</button>
+                <button ng-class="{'week': 'bm-active'}[vm.display]" ng-click="vm.setDisplay('week')" class="bg-white no-border bm-top-btn-three">七日</button>
+                <button ng-class="{'month': 'bm-active'}[vm.display]" ng-click="vm.setDisplay('month')" class="bg-white no-border bm-top-btn-three">近一月</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAD-navbar -->
+    <div ng-controller="NavbarController as vm"  class="h4 app-header navbar navbar-fixed-top pad-nav" style="min-height: 0px;background:white ">
+            <div ng-cloak  class="bm-navbar-header text-center " style="    line-height: 17px;
+    padding-top: 15px;">
+                <button   data-ng-click="vm.role()" class="btn head-button pull-right" >
+                  筛选
+                </button>
+        <div class="topmenu">
+            <ul highlight-class-name="active" >
+                <li><a ng-class="{'day': 'pad-nav-active'}[vm.display]" ng-click="vm.setDisplay('day')" class="topmenu-left">今日</a></li>
+                <li><a ng-class="{'week': 'pad-nav-active'}[vm.display]" ng-click="vm.setDisplay('week')" class="topmenu-middle">近七日</a></li>
+                <li><a ng-class="{'month': 'pad-nav-active'}[vm.display]" ng-click="vm.setDisplay('month')" class="topmenu-right">近一个月</a></li>
+            </ul>
+        </div>
+                <img  data-ng-click="vm.menu()" class=" pull-left no-border img-menu"  src="/born_dashboard/static/src/img/menu.png">
+            </div>
+            <!-- / navbar header -->
+    </div>
+
+    <!-- content -->
+    <div class="app-content ng-scope m-n" style="background-color:#f2f5f5">
+        <div class="app-content-body fade-in-up ng-scope"  style="padding-top: 60px;background-color:#f2f5f5;">
+        <!--<div class="app-content-body fade-in-up ng-scope"  style="padding-bottom: 0px;background-color:white;height:100%">-->
+            <div ng-view style="background-color:white" class="" id="ng-view" ></div>
+            <!--<div ng-view style="height:100%;background-color:white" class="" id="ng-view" ></div>-->
+            <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':false}"></toaster-container>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 dashboard-little-nav-container pad-nav " highlight-class-name="active" ng-controller="NavbarController as vm" ui-view="footer"  >
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+            <a ng-class="{'cashier': 'bottom-active'}[vm.bottom]" ng-click="vm.setBottom('cashier')" href="#/cashier" style="font-size:16px;font-weight:bold">收银统计</a>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+            <a ng-class="{'sale': 'bottom-active'}[vm.bottom]" ng-click="vm.setBottom('sale')" href="#/sale" style="font-size:16px;font-weight:bold">营业统计</a>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+            <a ng-class="{'member': 'bottom-active'}[vm.bottom]" ng-click="vm.setBottom('member')" href="#/member" style="font-size:16px;font-weight:bold">会员统计</a>
+        </div>
+    </div>
+    <div class="app-footer navbar navbar-fixed-bottom ng-scope m-n mobile-nav" ui-view="footer"  ng-controller="NavbarController as vm" style="min-height: 0px;">
+        <div class="row ng-scope" >
+            <nav>
+                 <div ng-cloak class="footermenu">
+                     <ul   highlight-class-name="active" style="background-color:white;box-shadow: 0 -2px 4px rgba(0,0,0,0.2);" >
+                         <li style="width: 33.3%" >
+                            <a ng-if="vm.clicked!='cashier'" href="#/cashier" ng-click="vm.clicked = 'cashier'"><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/cashier-b.png"><p>收银统计</p></a>
+                            <a ng-if="vm.clicked=='cashier'" href="#/cashier" ng-click="vm.clicked = 'cashier'" style="color:#00A7Fd"><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/cashier-b-d.png"><p>收银统计</p></a>
+                         </li>
+                         <li style="width: 33.3%" >
+                            <a ng-if="vm.clicked!='sale'" ng-click="vm.clicked = 'sale'" href="#/sale"><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/sale-b.png"><p>营业统计</p></a>
+                            <a ng-if="vm.clicked=='sale'" ng-click="vm.clicked = 'sale'" href="#/sale" style="color:#00A7Fd"><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/sale-b-d.png"><p>营业统计</p></a>
+                         </li>
+                         <li style="width: 33.3%" >
+                            <a ng-if="vm.clicked!='member'" ng-click="vm.clicked = 'member'" href="#/member" ><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/member-b.png"><p>会员统计</p></a>
+                            <a ng-if="vm.clicked=='member'" ng-click="vm.clicked = 'member'" href="#/member"  style="color:#00A7Fd"><img style="width:26px;height:25px" src="/born_dashboard/static/src/img/member-b-d.png"><p>会员统计</p></a>
+                         </li>
+                     </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div wc-overlay wc-overlay-delay="30">
+        <i class="fa fa-spin fa-refresh fa-2x"></i>
+    </div>
+
+
+    <script src="/born_dashboard/static/src/js/jquery.js"></script>
+    <script src="/born_dashboard/static/src/js/angular.min.1.46.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-locale_zh.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-touch.js"></script>
+    <script src="/born_dashboard/static/src/js/ngDialog.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-route1.46.min.js"></script>
+    <script src="/born_dashboard/static/src/js/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="/born_dashboard/static/src/js/Chart.min.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-chart.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-datepicker.js"></script>
+    <script src="/born_dashboard/static/src/js/angular-moment.min.js"></script>
+    <script src="/born_dashboard/static/defaultApp/wc.directives/directives/wcOverlay.js"></script>
+    <script src="/born_dashboard/static/defaultApp/app.js"></script>
+    <script src="/born_dashboard/static/defaultApp/animations/listAnimations.js"></script>
+    <script src="/born_dashboard/static/defaultApp/directives/wcUnique.js"></script>
+    <script src="/born_dashboard/static/defaultApp/services/config.js"></script>
+    <script src="/born_dashboard/static/defaultApp/services/httpInterceptors.js"></script>
+    <script src="/born_dashboard/static/defaultApp/services/dataService.js"></script>
+    <script src="/born_dashboard/static/defaultApp/services/modalService.js"></script>
+    <script src="/born_dashboard/static/defaultApp/services/shopService.js"></script>
+    <script src="/born_dashboard/static/defaultApp/controllers/cashiercontroller.js"></script>
+    <script src="/born_dashboard/static/defaultApp/controllers/salecontroller.js"></script>
+    <script src="/born_dashboard/static/defaultApp/controllers/membercontroller.js"></script>
+    <script src="/born_dashboard/static/defaultApp/controllers/navbarController.js"></script>
+    <script src="/born_dashboard/static/src/js/toaster.min.js"></script>
+
+
+
+
+</body>
+</html>

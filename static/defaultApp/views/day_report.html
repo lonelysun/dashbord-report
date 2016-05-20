@@ -1,0 +1,339 @@
+## -*- coding: utf-8 -*-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数据日报</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="/born_dashboard/static/src/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="/born_dashboard/static/src/css/simple-line-icons.css" rel="stylesheet" />
+    <script src="/born_dashboard/static/src/js/jquery.js"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" style="background-color: #EBEBEB">
+        <div class="col-xs-12">
+            <h4 style="color: #000;font-weight: 300">门店营业数据日报-${send_ids}</h4>
+        </div>
+    </div>
+    <div class="row" style="background-color: #EBEBEB">
+        <div class="col-xs-12">
+            <h5 style="color:#808080;font-weight: 400">发送时间：${send_time}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 text-center">
+            <div class="row" style="border-right:1px solid #B5B5B5;margin-top:10px">
+                昨日客流数
+            </div>
+            <div class="row" style="border-right:1px solid #B5B5B5;margin-bottom:10px">
+                <h2 id="all_1" style="margin-top: 5px;">
+                </h2>
+            </div>
+        </div>
+        <div class="col-xs-6 text-center">
+            <div class="row" style="margin-top:10px">
+                累计客流数
+            </div>
+            <div class="row" style="margin-bottom:10px">
+                <h2 id="all_2" style="margin-top: 5px;">
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top:20px; background-color: #EBEBEB">
+        <div class="col-xs-12" style="background-color: white">
+            <h5 style="color: #000;font-weight: 300">营业额</h5>
+        </div>
+    </div>
+    <div class="row" style="background-color: #437BB6;font-size: 14px;padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-6" style="color:white;">
+            <div class="col-xs-3" style="padding-left: 0;padding-right: 0;">
+                    昨日
+            </div>
+            <div id="report-3-1" class="col-xs-7" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+
+    </div>
+    <div id="report_3" style="height:260px"></div>
+    <div class="row" style="padding-top:20px; background-color: #EBEBEB">
+        <div class="col-xs-12" style="background-color: white">
+            <h5 style="color: #000;font-weight: 300">会员数</h5>
+        </div>
+    </div>
+    <div class="row" style="background-color: #437BB6;font-size: 14px;padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-6" style="color:white;border-right:1px solid white;">
+            <div class="col-xs-6" style="padding-left: 0;padding-right: 0;">
+                    昨日新增
+            </div>
+            <div id="report-1-1" class="col-xs-4" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+        <div class="col-xs-6" style="color:white">
+            <div class="col-xs-6" style="padding-left: 0;padding-right: 0;">
+                    总会员数
+            </div>
+            <div id="report-1-2" class="col-xs-4" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+    </div>
+    <div id="report_1" style="height:260px;"></div>
+    <div class="row" style="padding-top:20px; background-color: #EBEBEB">
+        <div class="col-xs-12" style="background-color: white">
+            <h5 style="color: #000;font-weight: 300">客流数</h5>
+        </div>
+    </div>
+    <div class="row" style="background-color: #437BB6;font-size: 14px;padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-6" style="color:white;border-right:1px solid white;">
+            <div class="col-xs-3" style="padding-left: 0;padding-right: 0;">
+                    昨日
+            </div>
+            <div id="report-2-1" class="col-xs-7" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+        <div class="col-xs-6" style="color:white">
+            <div class="col-xs-3" style="padding-left: 0;padding-right: 0;">
+                    累计
+            </div>
+            <div  id="report-2-2" class="col-xs-7" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+    </div>
+    <div id="report_2" style="height:260px"></div>
+    <div class="row" style="padding-top:20px; background-color: #EBEBEB">
+        <div class="col-xs-12" style="background-color: white">
+            <h5 style="color: #000;font-weight: 300">客单</h5>
+        </div>
+    </div>
+    <div class="row" style="background-color: #437BB6;font-size: 14px;padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-6" style="color:white;border-right:1px solid white;">
+            <div class="col-xs-3" style="padding-left: 0;padding-right: 0;">
+                    昨日
+            </div>
+            <div id="report-4-1" class="col-xs-7" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+        <div class="col-xs-6" style="color:white">
+            <div class="col-xs-3" style="padding-left: 0;padding-right: 0;">
+                    平均
+            </div>
+            <div  id="report-4-2" class="col-xs-7" style="padding-left:0;font-size: 20px;">
+            </div>
+        </div>
+    </div>
+    <div id="report_4" style="height:260px"></div>
+    <div class="row" style="background-color: #EBEBEB">
+        <a class="col-xs-12" href="https://www.baidu.com">
+            了解更多详细信息请下载店尚APP
+        </a>
+    </div>
+
+    <script type="text/javascript">
+// 路径配置
+require.config({
+    paths: {
+        echarts: 'http://echarts.baidu.com/build/dist'
+    }
+});
+// 使用
+require(
+    [
+        'echarts',
+        'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+    ],
+    function (ec) {
+        // 基于准备好的dom，初始化echarts图表
+        var report_1 = ec.init(document.getElementById('report_1'));
+        var report_2 = ec.init(document.getElementById('report_2'));
+        var report_3 = ec.init(document.getElementById('report_3'));
+        var report_4 = ec.init(document.getElementById('report_4'));
+
+    var data_obj = $.ajax({
+        method: 'GET',
+        url: '${url}',
+        success: function(data){
+            data = eval('(' + data + ')');
+            var option ={
+                tooltip: {
+                    trigger: "axis",
+                    show: true,
+                    axisPointer: {
+                        type: "none"
+                    }
+                },
+                toolbox: {
+                    show: false,
+                    feature: {
+                        mark: {
+                            show: false
+                        },
+                        dataView: {
+                            show: false,
+                            readOnly: true
+                        },
+                        magicType: {
+                            show: false,
+                            type: ["line", "bar"]
+                        },
+                        restore: {
+                            show: false
+                        },
+                        saveAsImage: {
+                            show: false
+                        }
+                    }
+                },
+                calculable: false,
+                xAxis: [
+                    {
+                        type: "category",
+                        data: data.date_poll_show,
+                        splitLine: {
+                            show: false
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: "rgb(215, 220, 224)",
+                                width: 1
+                            },
+                            show: true
+                        },
+                        axisTick: {
+                            show: true,
+                            lineStyle: {
+                                width: 1
+                            }
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: "value",
+                        axisLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        splitLine: {
+                            show: false
+                        },
+                        splitArea: {
+                            show: false
+                        },
+                        scale: true
+                    }
+                ],
+
+                grid: {
+                    x: 0,
+                    borderWidth: 0,
+                    y: 50,
+                    x2: 0,
+                    y2: 100
+                },
+                color: ["rgb(67, 123, 182)", "#87cefa", "#da70d6", "#32cd32", "#6495ed", "#ff69b4", "#ba55d3", "#cd5c5c", "#ffa500", "#40e0d0", "#1e90ff", "#ff6347", "#7b68ee", "#00fa9a", "#ffd700", "#6699FF", "#ff6666", "#3cb371", "#b8860b", "#30e0e0", "rgb(255, 255, 255)"]
+            };
+            // 为echarts对象加载数据
+            report_1.setOption(option);
+            report_2.setOption(option);
+            report_3.setOption(option);
+            report_4.setOption(option);
+
+            report_1.setSeries([
+            {
+                name: "会员数",
+                type: "line",
+                data: data.member_list,
+                smooth: false,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: "rgb(67, 123, 182)",
+                            width: 1
+                        }
+                    }
+                }
+            }
+        ]);
+            report_2.setSeries([
+            {
+                name: "客流数",
+                type: "line",
+                data: data.passenger_list,
+                smooth: false,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: "rgb(67, 123, 182)",
+                            width: 1
+                        }
+                    }
+                }
+            }
+        ]);
+            report_3.setSeries([
+            {
+                name: "营业额",
+                type: "line",
+                data: data.sale_list,
+                smooth: false,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: "rgb(67, 123, 182)",
+                            width: 1
+                        }
+                    }
+                }
+            }
+        ]);
+            report_4.setSeries([
+            {
+                name: "客单",
+                type: "line",
+                data: data.money_list,
+                smooth: false,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: "rgb(67, 123, 182)",
+                            width: 1
+                        }
+                    }
+                }
+            }
+        ]);
+            $("#report-1-1").text(data.report_1_1);
+            $("#report-2-1").text(data.report_2_1);
+            $("#report-3-1").text(data.report_3_1);
+            $("#report-4-1").text(data.report_4_1);
+            $("#report-1-2").text(data.report_1_2);
+            $("#report-2-2").text(data.report_2_2);
+            $("#report-3-2").text(data.report_3_2);
+            $("#report-4-2").text(data.report_4_2);
+            $("#all_1").text(data.all_1);
+            $("#all_2").text(data.all_2);
+
+    }
+});
+//    report_1.option.xAxis.data = ["周s", "周s二", "周s三", "周四", "周五", "周六", "周日"]
+        //                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+
+}
+);
+
+    </script>
+</div>
+</body>
+</html>

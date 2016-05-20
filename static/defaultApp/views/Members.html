@@ -1,0 +1,100 @@
+        <div class="col-md-12 col-sm-12 col-xs-12">
+                <!--会员 (人)-->
+                <div class="col-md-6 col-sm-6 col-xs-12 dashboard-little-part dashboard-little-height3" >
+                    <div class="dashboard-little-header">
+                        会员 (人)
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="dashborad-grap-contanier2">
+                            <canvas id="doughnut" class="chart chart-doughnut"
+                                    chart-data="data2" chart-labels="labels2"
+                                    chart-colours=colors2 chart-options = options >
+                            </canvas>
+                </div>
+                <div class="dashboard-donut-inner">
+                    <h5>总数</h5>
+                    <div>{{vm.member.total_member_cnt}}</div>
+                </div>
+
+                    </div>
+
+                    <div class="col-md-5 col-sm-5 col-xs-12 dashboard-right3">
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#3684F1"></div>活跃会员</div>
+                                <div class="dashboard-left-number2">{{vm.member.active_member_cnt}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#15B9F3"></div>普通会员</div>
+                                <div class="dashboard-left-number2">{{vm.member.normal_member_cnt}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><div class="dashboard-left-label"  style="border-color:#02E5F2"></div>沉睡会员</div>
+                                <div class="dashboard-left-number2">{{vm.member.sleep_member_cnt}}</div>
+                            </div>
+
+                    </div>
+
+                    <div class="clearfix"/>
+                </div>
+
+                <!--院余 (元)-->
+                <div class="col-md-6 col-sm-6 col-xs-12 dashboard-little-part dashboard-little-height3">
+                <div class="dashboard-little-header">
+                    院余 (元)
+                </div>
+
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="dashborad-grap-contanier2">
+                            <canvas id="doughnut2" class="chart chart-doughnut"
+                                    chart-data="data" chart-labels="labels"
+                                    chart-colours=colors chart-options = options >
+                            </canvas>
+
+                </div>
+                <div class="dashboard-donut-inner">
+                    <h5>总数</h5>
+                    <div>{{vm.member.yuanyu_amount}}</div>
+                </div>
+
+                </div>
+
+
+
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-right4">
+                        <div class="dashboard-left-row-container">
+                            <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#15B9F3"></div>储值余额</div>
+                            <div class="dashboard-left-number2">{{vm.member.total_amount}}</div>
+                        </div>
+                        <div class="dashboard-left-row-container">
+                            <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#02E5F2"></div>卡内项目</div>
+                            <div class="dashboard-left-number2">{{vm.member.consume_amount}}</div>
+                        </div>
+                </div>
+
+                <div class="clearfix"/>
+            </div>
+                <!--新增会员 (人)-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">新增会员 (人)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.member.new_member_cnt}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/1.png" /></div>
+                </div>
+
+                <!--开通微卡 (人)-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">开通微卡 (人)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.member.vip_member_cnt}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/2.png" /></div>
+                </div>
+
+
+                <!--开通会员 (人)-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">生日会员 (人)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.member.birth_cnt}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/2.png" /></div>
+                </div>
+
+
+        </div>

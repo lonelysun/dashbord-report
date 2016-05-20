@@ -1,0 +1,54 @@
+
+        <!--支付方式-->
+        <div  class="col-md-12 col-sm-12 col-xs-12">
+
+            <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-1">
+                <div class="dashboard-little-header">
+                    支付方式 (元)
+                </div>
+
+                <!--Chart JS 的环形图-->
+                <div class="dashborad-grap-contanier">
+                    <canvas id="doughnut" class="chart chart-doughnut"
+                            chart-data="data2" chart-labels="labels2"
+                            chart-colours=colors chart-options = options2 >
+                    </canvas>
+                </div>
+                <div class="dashboard-donut-inner">
+                    <h5>总数</h5>
+                    <div>{{vm.cashierdata.all_pay}}</div>
+                </div>
+
+                    <div class="dashboard-left-row" ng-repeat="pay_way in vm.cashierdata.pay_way">
+                        <span class="col-md-7 col-sm-7 col-xs-12 dashboard-left-text"><div class="dashboard-left-label"
+                           ng-class="{label_1:$index==1,label_2:$index==2,label_0:$index==0,label_3:$index==3,label_4:$index==4,label_5:$index==5,label_6:$index==6,label_7:$index==7,label_8:$index==8,label_9:$index==9}"></div>{{pay_way.name}}</span>
+                        <span class="col-md-5 col-sm-5 col-xs-12 dashboard-left-number">{{pay_way.amount}}</span>
+                    </div>
+
+
+            </div>
+
+
+            <!--销售排行-->
+            <div class="col-md-8 col-sm-8 col-xs-12 dashboard-little-part dashboard-little-1">
+                <div class="dashboard-little-header">
+                    <span>卖品排行 (件)</span>
+                </div>
+                <div id="dashboard-list-one">
+                    <div class="dashboard-right-row" data-ng-repeat="rank in vm.cashierdata.rank">
+                        <span class="dashboard-right-label">
+                            {{$index+1}}
+                        </span>
+                        <span class="dashboard-right-text">
+                            {{rank.name}}
+                        </span>
+                        <span class="dashboard-right-number">
+                            {{rank.cnt}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="clearfix"/>
+            </div>
+
+        </div>

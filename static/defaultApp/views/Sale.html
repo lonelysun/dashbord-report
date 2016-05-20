@@ -1,0 +1,105 @@
+        <div class="col-md-12 col-sm-12 col-xs-12">
+                <!--营业额-->
+                <div class="col-md-6 col-sm-6 col-xs-12 dashboard-little-part dashboard-little-height3" >
+                    <div class="dashboard-little-header">
+                        营业额
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="dashborad-grap-contanier2">
+                            <canvas id="doughnut" class="chart chart-doughnut"
+                                    chart-data="data2" chart-labels="labels2"
+                                    chart-colours=colors2 chart-options = options >
+                            </canvas>
+
+                </div>
+                <div class="dashboard-donut-inner">
+                    <h5>总数</h5>
+                    <div>{{vm.sale.all_amount}}</div>
+                </div>
+
+                    </div>
+
+                    <div class="col-md-5 col-sm-5 col-xs-12 dashboard-right1">
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><i class="fa fa-circle dashboard-left-label" style="border-color:#6763DF"></i>销售额</div>
+                                <div class="dashboard-left-number2">{{vm.sale.sale_amount}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><i class="fa fa-circle dashboard-left-label" style="border-color:#547BF2"></i>办卡/充值</div>
+                                <div class="dashboard-left-number2">{{vm.sale.recharge_amount}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><i class="fa fa-circle dashboard-left-label" style="border-color:#4BB7F3"></i>欠款</div>
+                                <div class="dashboard-left-number2">{{vm.sale.arrears_amount}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><i class="fa fa-circle dashboard-left-label" style="border-color:#4CE7F1"></i>还款</div>
+                                <div class="dashboard-left-number2">{{vm.sale.repayment_amount}}</div>
+                            </div>
+                            <div class="dashboard-left-row-container">
+                                <div class="dashboard-left-text2"><i class="fa fa-circle dashboard-left-label" style="border-color:#68F4AE"></i>退款</div>
+                                <div class="dashboard-left-number2">{{vm.sale.refund_amount}}</div>
+                            </div>
+                    </div>
+
+                    <div class="clearfix"/>
+                </div>
+
+                <!--消耗额-->
+                <div class="col-md-6 col-sm-6 col-xs-12 dashboard-little-part dashboard-little-height3">
+                <div class="dashboard-little-header">
+                    消耗额
+                </div>
+
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                    <div class="dashborad-grap-contanier2">
+                            <canvas id="doughnut2" class="chart chart-doughnut"
+                                    chart-data="data" chart-labels="labels"
+                                    chart-colours=colors chart-options = options >
+                            </canvas>
+
+                </div>
+                <div class="dashboard-donut-inner">
+                    <h5>总数</h5>
+                    <div>{{vm.sale.consumed_amount}}</div>
+                </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-right4">
+                        <div class="dashboard-left-row-container">
+                            <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#15B9F3"></div>产品销售额</div>
+                            <div class="dashboard-left-number2">{{vm.sale.product_consume_amount}}</div>
+                        </div>
+                        <div class="dashboard-left-row-container">
+                            <div class="dashboard-left-text2"><div class="dashboard-left-label" style="border-color:#02E5F2"></div>项目消耗额</div>
+                            <div class="dashboard-left-number2">{{vm.sale.item_consume_amount}}</div>
+                        </div>
+                </div>
+
+                <div class="clearfix"/>
+            </div>
+                <!--客流-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">客流 (人)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.sale.passenger}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/1.png" /></div>
+                </div>
+
+                <!--平均客单-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">平均客单 (元)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.sale.avg}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/2.png" /></div>
+                </div>
+
+
+                <!--预约-->
+                <div class="col-md-4 col-sm-4 col-xs-12 dashboard-little-part dashboard-little-height4">
+                    <div class="dashboard-member-bottom-title">预约 (人)</div>
+                    <div class="dashboard-member-bottom-number">{{vm.sale.reservation}}</div>
+                    <div class="dashboard-member-bottom-img"><img class="dashboard-img" src="/born_dashboard/static/src/img/2.png" /></div>
+                </div>
+
+
+        </div>

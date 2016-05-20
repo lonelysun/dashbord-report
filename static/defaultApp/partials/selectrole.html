@@ -1,0 +1,22 @@
+<div class="ngdialog-select">
+<div>
+    <div class="selectrole-col" >
+        <span style="color:#5F5F67;color: #5F5F67;position: relative;top: 4px;">开始时间</span>
+            <!--<input class="db-col-input pad-nav" type="date" name="start_time" data-ng-model="modalOptions.start_time" >-->
+            <input  readonly  class="db-col-input"
+                                              ng-model="modalOptions.start_time" auto-close="true"
+                                       format="yyyy-MM-dd"  type="text" max-view="date" min-view="date" date-time>
+    </div>
+    <div  class="selectrole-col" >
+        <span style="color:#5F5F67;color: #5F5F67;position: relative;top: 4px;">截止时间</span>
+        <!--<input class="db-col-input pad-nav" type="date" name="end_time" data-ng-model="modalOptions.end_time" >-->
+            <input  readonly  class="db-col-input"
+                                              ng-model="modalOptions.end_time" auto-close="true"
+                                       format="yyyy-MM-dd"  type="text" max-view="date" min-view="date" date-time>
+    </div>
+</div>
+<div class="no-bg bm-item row" >
+        <a class="" ng-click="closeThisDialog()" ><div class="col-xs-6 text-center db-col">取消</div></a>
+        <a style="" class="" ng-click="confirm('ok')"><div class="col-xs-6 text-center db-col" style="border-right: 0px">确定</div></a>
+</div>
+</div>

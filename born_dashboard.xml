@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="action_born_dashboard_url" model="ir.actions.act_url">
+            <field name="name">Born Report</field>
+            <field name="url">/dashboard</field>
+            <field name="target">self</field>
+        </record>
+<!--
+        <menuitem name="报表" id="born_dashboard_report" action="action_born_dashboard_url" parent="born_member_card.menu_born_pos_root"
+                  sequence="10"/>
+                  -->
+    </data>
+</openerp>
